@@ -1,6 +1,7 @@
 import { View, Text, FlatList, Pressable } from "react-native";
 import React, { useEffect, useState } from "react";
 import AppGradient from "@/components/AppGradient";
+import { Href, router } from "expo-router";
 
 const NewsList = () => {
   const [news, setNews] = useState<Article[]>([]);
@@ -20,7 +21,7 @@ const NewsList = () => {
           "https://newsapi.org/v2/top-headlines?country=us&apiKey=35d68208c1fa444a810535db09e7018b"
         );
         const data = await response.json();
-        console.log(data.articles);
+        // console.log(data.articles);
         setNews(data.articles);
       } catch (error) {
         console.error(error);
@@ -50,7 +51,15 @@ const NewsList = () => {
               showsVerticalScrollIndicator={false}
               renderItem={({ item }) => (
                 <Pressable
-                  onPress={() => console.log(item)}
+                  onPress={() =>
+                    router.push({
+                      pathname: "/(tabs)[id]",
+                      params: {
+                        title: item.title,
+                        author: item.author,
+                      },
+                    })
+                  }
                   className="h-auto my-3 p-5 rounded-2xl overflow-hidden bg-black"
                 >
                   <Text className="text-white text-xl">{item.author}</Text>
