@@ -1,9 +1,17 @@
-import { View, Text, FlatList, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  Pressable,
+  ActivityIndicator,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import AppGradient from "@/components/AppGradient";
-import { Href, router } from "expo-router";
+import { router } from "expo-router";
+import { useTranslation } from "react-i18next";
 
 const NewsList = () => {
+  const { t } = useTranslation();
   const [news, setNews] = useState<Article[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -38,35 +46,42 @@ const NewsList = () => {
       <AppGradient colors={["#ff5f6d", "#d32f2f"]}>
         <View className="mx-5 my-5">
           <View>
-            <Text className="text-gray-200 font-bold text-4xl text-left">
-              News List
+            <Text className="text-gray-200 font-bold text-4xl text-center">
+              {t("news_list.news_list_title")}
             </Text>
           </View>
 
-          <View className="mt-6">
-            <FlatList
-              data={news}
-              className="mb-20"
-              keyExtractor={(item) => item.title}
-              showsVerticalScrollIndicator={false}
-              renderItem={({ item }) => (
-                <Pressable
-                  onPress={() =>
-                    router.push({
-                      pathname: "/(tabs)[id]",
-                      params: {
-                        title: item.title,
-                        author: item.author,
-                      },
-                    })
-                  }
-                  className="h-auto my-3 p-5 rounded-2xl overflow-hidden bg-black"
-                >
-                  <Text className="text-white text-xl">{item.author}</Text>
-                </Pressable>
-              )}
-            />
-          </View>
+          {loading ? (
+            <View className="flex justify-center items-center mt-16">
+              <ActivityIndicator size="large" color="#ffffff" />
+            </View>
+          ) : (
+            <View className="mt-6">
+              <FlatList
+                data={news}
+                className="mb-20"
+                keyExtractor={(item) => item.title}
+                showsVerticalScrollIndicator={false}
+                renderItem={({ item }) => (
+                  <Pressable
+                    onPress={() =>
+                      router.push({
+                        pathname: "/[id]",
+                        params: {
+                          id: item.author,
+                          title: item.title,
+                          author: item.author,
+                        },
+                      })
+                    }
+                    className="h-auto my-3 p-5 rounded-2xl overflow-hidden bg-black"
+                  >
+                    <Text className="text-white text-xl">{item.author}</Text>
+                  </Pressable>
+                )}
+              />
+            </View>
+          )}
         </View>
       </AppGradient>
     </View>

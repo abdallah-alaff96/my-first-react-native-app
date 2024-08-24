@@ -1,0 +1,20 @@
+{
+  "app": {
+    "breaking_news_title": "Welcome 👋 to Breaking News",
+    "breaking_news_info": "Get Your Daily Breaking News Here"
+  },
+
+  "news_list": {
+    "news_list_title": "News List"
+  },
+
+  "details": {
+    "details_title": "Details",
+    "author": "Author",
+    "description": "Description"
+  },
+  "settings": {
+    "settings_title": "Settings",
+    "language": "Language"
+  }
+}
