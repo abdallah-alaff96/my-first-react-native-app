@@ -15,6 +15,7 @@
   },
   "settings": {
     "settings_title": "Settings",
-    "language": "Language"
+    "language": "Language",
+    "mobile_phone_information": "Locale information"
   }
 }

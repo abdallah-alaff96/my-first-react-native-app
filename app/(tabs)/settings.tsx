@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Switch, Button } from "react-native";
+import { View, Text, Switch } from "react-native";
 import { useTranslation } from "react-i18next";
 import * as Localization from "expo-localization";
 import AppGradient from "@/components/AppGradient";
+import logUserDefaults from "@/components/logUserLocal-appearance";
 
 const Settings = () => {
   const { i18n, t } = useTranslation();
   const [isEnable, setIsEnable] = useState(i18n.language === "ar");
+  const locales = Localization.getLocales();
 
   useEffect(() => {
-    const deviceLocaleLang = Localization.locale.startsWith("ar") ? "ar" : "en";
+    const deviceLocaleLang = locales[0].languageCode === "ar" ? "ar" : "en";
+    console.log("deviceLocaleLang :", deviceLocaleLang);
     i18n.changeLanguage(deviceLocaleLang);
     setIsEnable(deviceLocaleLang === "ar");
   }, []);
@@ -53,6 +56,7 @@ const Settings = () => {
               />
             </View>
           </View>
+          {logUserDefaults()}
         </View>
       </AppGradient>
     </View>
