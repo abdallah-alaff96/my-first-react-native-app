@@ -35,7 +35,7 @@ This project is a React Native application built with Expo CLI. It includes feat
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/abdallah-alaff96/my-first-react-native-app.git
 
 2. Navigate to the project directory:
 
