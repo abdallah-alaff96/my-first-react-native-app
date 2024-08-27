@@ -1,62 +1,101 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Switch } from "react-native";
+import { View, Text, useColorScheme } from "react-native";
 import { useTranslation } from "react-i18next";
 import * as Localization from "expo-localization";
 import AppGradient from "@/components/AppGradient";
-import logUserDefaults from "@/components/logUserLocal-appearance";
+import { Picker } from "@react-native-picker/picker";
+import Colors from "@/constants/Colors";
 
 const Settings = () => {
+  const theme = useColorScheme();
   const { i18n, t } = useTranslation();
-  const [isEnable, setIsEnable] = useState(i18n.language === "ar");
   const locales = Localization.getLocales();
+  const [selectedLang, setSelectedLang] = useState<string>(
+    locales[0].languageCode === "ar" ? "ar" : "en"
+  );
 
   useEffect(() => {
     const deviceLocaleLang = locales[0].languageCode === "ar" ? "ar" : "en";
-    console.log("deviceLocaleLang :", deviceLocaleLang);
     i18n.changeLanguage(deviceLocaleLang);
-    setIsEnable(deviceLocaleLang === "ar");
+    setSelectedLang(deviceLocaleLang);
   }, []);
-
-  const toggleSwitch = () => {
-    const newLang = isEnable ? "en" : "ar";
-    i18n.changeLanguage(newLang);
-    setIsEnable(!isEnable);
-  };
 
   return (
     <View className="flex-1">
-      <AppGradient colors={["#ff5f6d", "#d32f2f"]}>
+      <AppGradient
+        colors={[theme === "dark" ? Colors.dark : Colors.light, Colors.primary]}
+      >
         <View className="mx-5 my-5">
           <Text
-            className={`text-gray-200 font-bold text-4xl ${
+            className={`${
+              theme === "dark" ? "text-light" : "text-dark"
+            } font-bold text-4xl ${
               i18n.dir() === "ltr" ? "text-left" : "text-right"
             } `}
           >
             {t("settings.settings_title")}
           </Text>
           <View
-            className={`flex justify-between items-center mt-6 ${
+            className={`flex justify-between items-center ${
               i18n.dir() === "rtl" ? "flex-row-reverse" : "flex-row"
             }`}
           >
-            <Text className="text-gray-200 font-medium text-2xl">
-              {t("settings.language")}
+            <Text
+              className={`${
+                theme === "dark" ? "text-light" : "text-dark"
+              } font-medium text-2xl flex-1${
+                i18n.dir() === "ltr" ? "text-left" : "text-right"
+              } `}
+            >
+              {`${t("settings.language")} :`}
             </Text>
 
-            <Text className="text-gray-200 font-light text-2xl">
-              {isEnable ? "Arabic" : "English"}
-            </Text>
-
-            <View>
-              <Switch
-                trackColor={{ false: "#767577", true: "#81b0ff" }}
-                thumbColor={isEnable ? "#f5dd4b" : "#f4f3f4"}
-                onValueChange={toggleSwitch}
-                value={isEnable}
-              />
+            <View className="h-32 flex flex-1 justify-center">
+              <Picker
+                enabled={true}
+                selectedValue={selectedLang}
+                onValueChange={(value) => {
+                  i18n.changeLanguage(value);
+                  setSelectedLang(value);
+                }}
+              >
+                <Picker.Item
+                  label="English"
+                  value={"en"}
+                  color={theme === "dark" ? Colors.light : Colors.dark}
+                />
+                <Picker.Item
+                  label="Arabic"
+                  value={"ar"}
+                  color={theme === "dark" ? Colors.light : Colors.dark}
+                />
+              </Picker>
             </View>
           </View>
-          {logUserDefaults()}
+          <View
+            className={`flex justify-between items-center mb-6 ${
+              i18n.dir() === "rtl" ? "flex-row-reverse" : "flex-row"
+            }`}
+          >
+            <Text
+              className={`${
+                theme === "dark" ? "text-light" : "text-dark"
+              } font-medium text-2xl flex-1${
+                i18n.dir() === "ltr" ? "text-left" : "text-right"
+              } `}
+            >
+              {`${t("settings.theme")} :`}
+            </Text>
+            <Text
+              className={`${
+                theme === "dark" ? "text-light" : "text-dark"
+              } font-light text-2xl flex-1${
+                i18n.dir() === "ltr" ? "text-left" : "text-right"
+              } `}
+            >
+              {`${theme === "dark" ? t("settings.dark") : t("settings.light")}`}
+            </Text>
+          </View>
         </View>
       </AppGradient>
     </View>

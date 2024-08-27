@@ -16,6 +16,9 @@
   "settings": {
     "settings_title": "Settings",
     "language": "Language",
+    "theme": "System Theme",
+    "dark": "Dark",
+    "light": "Light",
     "mobile_phone_information": "Locale information"
   }
 }

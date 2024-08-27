@@ -1,4 +1,10 @@
-import { View, Text, ImageBackground, SafeAreaView } from "react-native";
+import {
+  View,
+  Text,
+  ImageBackground,
+  SafeAreaView,
+  StatusBar,
+} from "react-native";
 import React from "react";
 import bgimgnew from "@/assets/bgimgnews.jpg";
 import CustomButton from "@/components/CustomButton";
@@ -34,6 +40,7 @@ const App = () => {
                   title="Get Started!"
                 />
               </View>
+              <StatusBar barStyle="light-content" />
             </SafeAreaView>
           </AppGradient>
         </ImageBackground>

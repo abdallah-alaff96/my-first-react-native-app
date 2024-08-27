@@ -16,6 +16,9 @@
   "settings": {
     "settings_title": "الإعدادات",
     "language": "اللغة",
+    "theme": "اضاءة الهاتف",
+    "dark": "مظلم",
+    "light": "فاتح",
     "mobile_phone_information": "معلومات الهاتف المحمول"
   }
 }

@@ -12,6 +12,11 @@ module.exports = {
       fontFamily: {
         rmono: ["Roboto-Mono", "sans-serif"],
       },
+      colors: {
+        primary: "#E0BBE4",
+        light: "#FFFFFF",
+        dark: "#0D0914",
+      },
     },
   },
   plugins: [require("tailwindcss-logical")],
