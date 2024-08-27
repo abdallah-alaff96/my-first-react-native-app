@@ -1,50 +1,67 @@
-# Welcome to your Expo app 👋
+# Breaking News App 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Overview
 
-## Get started
+This project is a React Native application built with Expo CLI. It includes features like fetching and displaying news articles, and internationalization, and a dark/light theme based on your system preference. The app is designed to provide a seamless user experience with a clean and modern interface.
 
-1. Install dependencies
+## Features
+
+- **Breaking News Feed**: Fetches and displays breaking news articles from a free API.
+- **Article Details**: View detailed information about each news article on a separate screen.
+- **Internationalization**: Supports multiple languages using `expo-localization` and `react-i18next`.
+- **Dark/Light modes system preference**: View dark or light themes using useColorScheme() hook.
+- **Loading Animation**: Displays a loading spinner while data is being fetched.
+
+## Technologies
+
+- **React Native**: Framework for building native apps using React.
+- **Expo**: Open-source platform for building React Native apps with managed workflow.
+- **TypeScript**: A superset of JavaScript with static typing, used for better development experience.
+- **Tailwind CSS**: Utility-first CSS framework for rapid UI development (via NativeWind).
+- **React-i18next**: Internationalization framework for React, providing translations and localization support.
+- **Expo-Router**: Navigation library for handling screen transitions.
+- **Async/Await**: Making API requests.
+- **NativeWind**: Tailwind CSS integration for React Native.
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (version 18 or later)
+- Expo CLI (`npm install -g expo-cli`)
+
+### Installation
+
+1. Clone the repository:
 
    ```bash
-   npm install
-   ```
+   git clone https://github.com/your-username/your-repo-name.git
 
-2. Start the app
+2. Navigate to the project directory:
 
-   ```bash
-    npx expo start
-   ```
+bash
+cd your-repo-name
 
-In the output, you'll find options to open the app in a
+3. Install dependencies:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+bash
+npm install
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+4. Start the Expo development server:
 
-## Get a fresh project
+bash
+npm start
 
-When you're ready, run:
+### Project Structure
+App.tsx: Main entry point of the application.
+screens/: Contains all screen components.
+components/: Reusable UI components.
+constants/: Configuration and constants like colors.
+locales/: Localization files for internationalization.
+styles/: Custom styles and theme settings.
 
-```bash
-npm run reset-project
-```
+### Contact
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+If you have any questions or suggestions, feel free to reach out to me:
+Email: abdallah96.alaff@gmail.com
+GitHub: abdallah-alaff96
