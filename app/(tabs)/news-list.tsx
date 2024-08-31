@@ -11,6 +11,7 @@ import AppGradient from "@/components/AppGradient";
 import { router } from "expo-router";
 import { useTranslation } from "react-i18next";
 import Colors from "@/constants/Colors";
+import StyledText from "@/atoms/StyledText";
 
 const NewsList = () => {
   const theme = useColorScheme();
@@ -50,14 +51,10 @@ const NewsList = () => {
         colors={[theme === "dark" ? Colors.dark : Colors.light, Colors.primary]}
       >
         <View className="mx-5 my-5">
-          <View>
-            <Text
-              className={`font-bold text-4xl text-center ${
-                theme === "dark" ? "text-light" : "text-dark"
-              }`}
-            >
+          <View className="flex items-center">
+            <StyledText preset="heading">
               {t("news_list.news_list_title")}
-            </Text>
+            </StyledText>
           </View>
 
           {loading ? (
@@ -86,17 +83,9 @@ const NewsList = () => {
                         },
                       })
                     }
-                    className={`h-auto my-3 p-5 rounded-2xl overflow-hidden  ${
-                      theme === "dark" ? "bg-light" : "bg-dark"
-                    }`}
+                    className={`h-auto my-3 p-5 rounded-2xl overflow-hidden bg-primary`}
                   >
-                    <Text
-                      className={`text-lg font-bold  ${
-                        theme === "dark" ? "text-dark" : "text-light"
-                      }`}
-                    >
-                      {item.author}
-                    </Text>
+                    <StyledText preset="subheading">{item.author}</StyledText>
                   </Pressable>
                 )}
               />
