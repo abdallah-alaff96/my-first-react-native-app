@@ -6,6 +6,7 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import { useTranslation } from "react-i18next";
 import i18n from "@/assets/i18n/i18n";
 import Colors from "@/constants/Colors";
+import StyledText from "@/atoms/StyledText";
 
 const Details = () => {
   const theme = useColorScheme();
@@ -17,7 +18,7 @@ const Details = () => {
       <AppGradient
         colors={[theme === "dark" ? Colors.dark : Colors.light, Colors.primary]}
       >
-        <View className="p-5">
+        <View className="p-5 flex items-center">
           <Pressable
             onPress={() => router.back()}
             className={`absolute top-4 z-10 ${
@@ -30,31 +31,15 @@ const Details = () => {
               color={theme === "dark" ? Colors.light : Colors.dark}
             />
           </Pressable>
-          <Text
-            className={`${
-              theme === "dark" ? "text-light" : "text-dark"
-            } font-bold text-4xl text-center`}
-          >
-            {t("details.details_title")}
-          </Text>
+          <StyledText preset="heading">{t("details.details_title")}</StyledText>
         </View>
         <View className="p-5">
-          <Text
-            className={`${
-              theme === "dark" ? "text-light" : "text-dark"
-            } text-2xl font-bold ${
-              i18n.dir() === "ltr" ? "text-left" : "text-right"
-            }`}
-          >{`${t("details.author")}: ${author}`}</Text>
-          <Text
-            className={`${
-              theme === "dark" ? "text-light" : "text-dark"
-            } text-lg mt-4 ${
-              i18n.dir() === "ltr" ? "text-left" : "text-right"
-            }`}
-          >
-            {`${t("details.description")}: ${title}`}
-          </Text>
+          <StyledText preset="subheading">{`${t(
+            "details.author"
+          )}: ${author}`}</StyledText>
+          <StyledText preset="body">{`${t(
+            "details.description"
+          )}: ${title}`}</StyledText>
         </View>
       </AppGradient>
     </View>

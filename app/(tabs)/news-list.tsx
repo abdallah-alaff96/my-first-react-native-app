@@ -50,7 +50,7 @@ const NewsList = () => {
       <AppGradient
         colors={[theme === "dark" ? Colors.dark : Colors.light, Colors.primary]}
       >
-        <View className="mx-5 my-5">
+        <View className="mx-6 my-5 flex items-stretch">
           <View className="flex items-center">
             <StyledText preset="heading">
               {t("news_list.news_list_title")}
@@ -58,38 +58,35 @@ const NewsList = () => {
           </View>
 
           {loading ? (
-            <View className="flex justify-center items-center mt-16">
-              <ActivityIndicator
-                size="large"
-                color={theme === "dark" ? Colors.light : Colors.dark}
-              />
-            </View>
+            <ActivityIndicator
+              className="mt-16"
+              size="large"
+              color={theme === "dark" ? Colors.light : Colors.dark}
+            />
           ) : (
-            <View className="mt-6">
-              <FlatList
-                data={news}
-                className="mb-20"
-                keyExtractor={(item) => item.title}
-                showsVerticalScrollIndicator={false}
-                renderItem={({ item }) => (
-                  <Pressable
-                    onPress={() =>
-                      router.push({
-                        pathname: "/[id]",
-                        params: {
-                          id: item.author,
-                          title: item.title,
-                          author: item.author,
-                        },
-                      })
-                    }
-                    className={`h-auto my-3 p-5 rounded-2xl overflow-hidden bg-primary`}
-                  >
-                    <StyledText preset="subheading">{item.author}</StyledText>
-                  </Pressable>
-                )}
-              />
-            </View>
+            <FlatList
+              data={news}
+              className="mt-6 mb-4"
+              keyExtractor={(item) => item.title}
+              showsVerticalScrollIndicator={false}
+              renderItem={({ item }) => (
+                <Pressable
+                  onPress={() =>
+                    router.push({
+                      pathname: "/[id]",
+                      params: {
+                        id: item.author,
+                        title: item.title,
+                        author: item.author,
+                      },
+                    })
+                  }
+                  className={`h-auto my-3 p-5 rounded-2xl overflow-hidden bg-primary`}
+                >
+                  <StyledText preset="subheading">{item.author}</StyledText>
+                </Pressable>
+              )}
+            />
           )}
         </View>
       </AppGradient>
