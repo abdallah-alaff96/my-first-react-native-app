@@ -5,7 +5,7 @@ import * as Localization from "expo-localization";
 import AppGradient from "@/components/AppGradient";
 import { Picker } from "@react-native-picker/picker";
 import Colors from "@/constants/Colors";
-import StyledText from "@/atoms/StyledText";
+import CustomText from "@/atoms/CustomText";
 
 const Settings = () => {
   const theme = useColorScheme();
@@ -27,17 +27,17 @@ const Settings = () => {
         colors={[theme === "dark" ? Colors.dark : Colors.light, Colors.primary]}
       >
         <View className="mx-5 my-5">
-          <StyledText preset="heading">
+          <CustomText preset="heading">
             {t("settings.settings_title")}
-          </StyledText>
+          </CustomText>
           <View
             className={`flex justify-between items-center ${
               i18n.dir() === "rtl" ? "flex-row-reverse" : "flex-row"
             }`}
           >
-            <StyledText preset="subheading">{`${t(
+            <CustomText preset="subheading">{`${t(
               "settings.language"
-            )} :`}</StyledText>
+            )} :`}</CustomText>
 
             <View className="h-32 flex flex-1 justify-center">
               <Picker
@@ -66,13 +66,13 @@ const Settings = () => {
               i18n.dir() === "rtl" ? "flex-row-reverse" : "flex-row"
             }`}
           >
-            <StyledText preset="subheading">
+            <CustomText preset="subheading">
               {`${t("settings.theme")} :`}
-            </StyledText>
+            </CustomText>
 
-            <StyledText preset="subheading">
+            <CustomText preset="subheading">
               {`${theme === "dark" ? t("settings.dark") : t("settings.light")}`}
-            </StyledText>
+            </CustomText>
           </View>
         </View>
       </AppGradient>

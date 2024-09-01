@@ -6,7 +6,7 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import { useTranslation } from "react-i18next";
 import i18n from "@/assets/i18n/i18n";
 import Colors from "@/constants/Colors";
-import StyledText from "@/atoms/StyledText";
+import CustomText from "@/atoms/CustomText";
 
 const Details = () => {
   const theme = useColorScheme();
@@ -31,15 +31,15 @@ const Details = () => {
               color={theme === "dark" ? Colors.light : Colors.dark}
             />
           </Pressable>
-          <StyledText preset="heading">{t("details.details_title")}</StyledText>
+          <CustomText preset="heading">{t("details.details_title")}</CustomText>
         </View>
         <View className="p-5">
-          <StyledText preset="subheading">{`${t(
+          <CustomText preset="subheading">{`${t(
             "details.author"
-          )}: ${author}`}</StyledText>
-          <StyledText preset="body">{`${t(
+          )}: ${author}`}</CustomText>
+          <CustomText preset="body">{`${t(
             "details.description"
-          )}: ${title}`}</StyledText>
+          )}: ${title}`}</CustomText>
         </View>
       </AppGradient>
     </View>

@@ -7,12 +7,12 @@ import {
 } from "react-native";
 import React from "react";
 import bgimgnew from "@/assets/bgimgnews.jpg";
-import CustomButton from "@/components/CustomButton";
 import { Href, useRouter } from "expo-router";
 import AppGradient from "@/components/AppGradient";
 import { I18nextProvider, useTranslation } from "react-i18next";
 import i18n from "@/assets/i18n/i18n";
-import StyledText from "@/atoms/StyledText";
+import CustomText from "@/atoms/CustomText";
+import CustomTouchableOpacity from "@/atoms/CustomTouchableOpacity";
 
 const App = () => {
   const router = useRouter();
@@ -28,18 +28,20 @@ const App = () => {
           <AppGradient colors={["rgba(0,0,0,0.2)", "rgba(0,0,0,0.6)"]}>
             <SafeAreaView className="flex-1 mx-5 my-12 justify-between">
               <View>
-                <StyledText preset="heading">
+                <CustomText preset="heading">
                   {t("app.breaking_news_title")}
-                </StyledText>
-                <StyledText preset="body">{`${t(
+                </CustomText>
+                <CustomText preset="body">{`${t(
                   "app.breaking_news_info"
-                )} 🙌`}</StyledText>
+                )} 🙌`}</CustomText>
               </View>
               <View>
-                <CustomButton
+                <CustomTouchableOpacity
+                  preset="default"
                   onPress={() => router.push("/news-list" as Href)}
-                  title="Get Started!"
-                />
+                >
+                  <CustomText preset="subheading">Get Started!</CustomText>
+                </CustomTouchableOpacity>
               </View>
               <StatusBar barStyle="light-content" />
             </SafeAreaView>

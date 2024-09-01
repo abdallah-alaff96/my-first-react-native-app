@@ -1,8 +1,6 @@
 import {
   View,
-  Text,
   FlatList,
-  Pressable,
   ActivityIndicator,
   useColorScheme,
 } from "react-native";
@@ -11,7 +9,8 @@ import AppGradient from "@/components/AppGradient";
 import { router } from "expo-router";
 import { useTranslation } from "react-i18next";
 import Colors from "@/constants/Colors";
-import StyledText from "@/atoms/StyledText";
+import CustomText from "@/atoms/CustomText";
+import CustomPressable from "@/atoms/CustomPressable";
 
 const NewsList = () => {
   const theme = useColorScheme();
@@ -52,9 +51,9 @@ const NewsList = () => {
       >
         <View className="mx-6 my-5 flex items-stretch">
           <View className="flex items-center">
-            <StyledText preset="heading">
+            <CustomText preset="heading">
               {t("news_list.news_list_title")}
-            </StyledText>
+            </CustomText>
           </View>
 
           {loading ? (
@@ -70,7 +69,8 @@ const NewsList = () => {
               keyExtractor={(item) => item.title}
               showsVerticalScrollIndicator={false}
               renderItem={({ item }) => (
-                <Pressable
+                <CustomPressable
+                  preset="default"
                   onPress={() =>
                     router.push({
                       pathname: "/[id]",
@@ -81,10 +81,9 @@ const NewsList = () => {
                       },
                     })
                   }
-                  className={`h-auto my-3 p-5 rounded-2xl overflow-hidden bg-primary`}
                 >
-                  <StyledText preset="subheading">{item.author}</StyledText>
-                </Pressable>
+                  <CustomText preset="subheading">{item.author}</CustomText>
+                </CustomPressable>
               )}
             />
           )}

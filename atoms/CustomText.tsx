@@ -16,7 +16,7 @@ const textStyling = StyleSheet.create({
   body: { fontSize: 16, fontWeight: "normal", marginVertical: 4 },
 });
 
-const StyledText = ({
+const CustomText = ({
   children,
   preset = "body",
   ...rest
@@ -40,4 +40,4 @@ const StyledText = ({
   );
 };
 
-export default StyledText;
+export default CustomText;
