@@ -1,10 +1,4 @@
-import {
-  View,
-  Text,
-  ImageBackground,
-  SafeAreaView,
-  StatusBar,
-} from "react-native";
+import { View, ImageBackground, StatusBar } from "react-native";
 import React from "react";
 import bgimgnew from "@/assets/bgimgnews.jpg";
 import { Href, useRouter } from "expo-router";
@@ -26,8 +20,8 @@ const App = () => {
           className="flex-1"
         >
           <AppGradient colors={["rgba(0,0,0,0.2)", "rgba(0,0,0,0.6)"]}>
-            <SafeAreaView className="flex-1 mx-5 my-12 justify-between">
-              <View>
+            <View className="flex flex-1 mx-5 my-12 justify-between items-center">
+              <View className="w-72 flex justify-center items-center">
                 <CustomText preset="heading">
                   {t("app.breaking_news_title")}
                 </CustomText>
@@ -35,16 +29,14 @@ const App = () => {
                   "app.breaking_news_info"
                 )} 🙌`}</CustomText>
               </View>
-              <View>
-                <CustomTouchableOpacity
-                  preset="default"
-                  onPress={() => router.push("/news-list" as Href)}
-                >
-                  <CustomText preset="subheading">Get Started!</CustomText>
-                </CustomTouchableOpacity>
-              </View>
+              <CustomTouchableOpacity
+                preset="default"
+                onPress={() => router.push("/news-list" as Href)}
+              >
+                <CustomText preset="subheading">Get Started!</CustomText>
+              </CustomTouchableOpacity>
               <StatusBar barStyle="light-content" />
-            </SafeAreaView>
+            </View>
           </AppGradient>
         </ImageBackground>
       </View>

@@ -1,6 +1,6 @@
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import Content from "./Content";
+import { SafeAreaView } from "react-native";
 
 const AppGradient = ({
   children,
@@ -11,7 +11,7 @@ const AppGradient = ({
 }) => {
   return (
     <LinearGradient colors={colors} className="flex-1">
-      <Content>{children}</Content>
+      <SafeAreaView className="flex-1 px-5 py-3">{children}</SafeAreaView>
     </LinearGradient>
   );
 };

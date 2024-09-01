@@ -20,6 +20,8 @@ const touchableOpacityStyling = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
+    width: "auto",
+    paddingHorizontal: 80,
   },
 });
 
