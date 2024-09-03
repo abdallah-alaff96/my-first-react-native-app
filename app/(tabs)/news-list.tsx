@@ -1,8 +1,6 @@
 import {
   View,
-  Text,
   FlatList,
-  Pressable,
   ActivityIndicator,
   useColorScheme,
 } from "react-native";
@@ -11,6 +9,8 @@ import AppGradient from "@/components/AppGradient";
 import { router } from "expo-router";
 import { useTranslation } from "react-i18next";
 import Colors from "@/constants/Colors";
+import CustomText from "@/atoms/CustomText";
+import CustomPressable from "@/atoms/CustomPressable";
 
 const NewsList = () => {
   const theme = useColorScheme();
@@ -49,58 +49,43 @@ const NewsList = () => {
       <AppGradient
         colors={[theme === "dark" ? Colors.dark : Colors.light, Colors.primary]}
       >
-        <View className="mx-5 my-5">
-          <View>
-            <Text
-              className={`font-bold text-4xl text-center ${
-                theme === "dark" ? "text-light" : "text-dark"
-              }`}
-            >
+        <View className="mx-6 my-5 flex items-stretch">
+          <View className="flex items-center">
+            <CustomText preset="heading">
               {t("news_list.news_list_title")}
-            </Text>
+            </CustomText>
           </View>
 
           {loading ? (
-            <View className="flex justify-center items-center mt-16">
-              <ActivityIndicator
-                size="large"
-                color={theme === "dark" ? Colors.light : Colors.dark}
-              />
-            </View>
+            <ActivityIndicator
+              className="mt-16"
+              size="large"
+              color={theme === "dark" ? Colors.light : Colors.dark}
+            />
           ) : (
-            <View className="mt-6">
-              <FlatList
-                data={news}
-                className="mb-20"
-                keyExtractor={(item) => item.title}
-                showsVerticalScrollIndicator={false}
-                renderItem={({ item }) => (
-                  <Pressable
-                    onPress={() =>
-                      router.push({
-                        pathname: "/[id]",
-                        params: {
-                          id: item.author,
-                          title: item.title,
-                          author: item.author,
-                        },
-                      })
-                    }
-                    className={`h-auto my-3 p-5 rounded-2xl overflow-hidden  ${
-                      theme === "dark" ? "bg-light" : "bg-dark"
-                    }`}
-                  >
-                    <Text
-                      className={`text-lg font-bold  ${
-                        theme === "dark" ? "text-dark" : "text-light"
-                      }`}
-                    >
-                      {item.author}
-                    </Text>
-                  </Pressable>
-                )}
-              />
-            </View>
+            <FlatList
+              data={news}
+              className="mt-6 mb-4"
+              keyExtractor={(item) => item.title}
+              showsVerticalScrollIndicator={false}
+              renderItem={({ item }) => (
+                <CustomPressable
+                  preset="default"
+                  onPress={() =>
+                    router.push({
+                      pathname: "/[id]",
+                      params: {
+                        id: item.author,
+                        title: item.title,
+                        author: item.author,
+                      },
+                    })
+                  }
+                >
+                  <CustomText preset="subheading">{item.author}</CustomText>
+                </CustomPressable>
+              )}
+            />
           )}
         </View>
       </AppGradient>

@@ -5,6 +5,7 @@ import * as Localization from "expo-localization";
 import AppGradient from "@/components/AppGradient";
 import { Picker } from "@react-native-picker/picker";
 import Colors from "@/constants/Colors";
+import CustomText from "@/atoms/CustomText";
 
 const Settings = () => {
   const theme = useColorScheme();
@@ -26,29 +27,17 @@ const Settings = () => {
         colors={[theme === "dark" ? Colors.dark : Colors.light, Colors.primary]}
       >
         <View className="mx-5 my-5">
-          <Text
-            className={`${
-              theme === "dark" ? "text-light" : "text-dark"
-            } font-bold text-4xl ${
-              i18n.dir() === "ltr" ? "text-left" : "text-right"
-            } `}
-          >
+          <CustomText preset="heading">
             {t("settings.settings_title")}
-          </Text>
+          </CustomText>
           <View
             className={`flex justify-between items-center ${
               i18n.dir() === "rtl" ? "flex-row-reverse" : "flex-row"
             }`}
           >
-            <Text
-              className={`${
-                theme === "dark" ? "text-light" : "text-dark"
-              } font-medium text-2xl flex-1${
-                i18n.dir() === "ltr" ? "text-left" : "text-right"
-              } `}
-            >
-              {`${t("settings.language")} :`}
-            </Text>
+            <CustomText preset="subheading">{`${t(
+              "settings.language"
+            )} :`}</CustomText>
 
             <View className="h-32 flex flex-1 justify-center">
               <Picker
@@ -77,24 +66,13 @@ const Settings = () => {
               i18n.dir() === "rtl" ? "flex-row-reverse" : "flex-row"
             }`}
           >
-            <Text
-              className={`${
-                theme === "dark" ? "text-light" : "text-dark"
-              } font-medium text-2xl flex-1${
-                i18n.dir() === "ltr" ? "text-left" : "text-right"
-              } `}
-            >
+            <CustomText preset="subheading">
               {`${t("settings.theme")} :`}
-            </Text>
-            <Text
-              className={`${
-                theme === "dark" ? "text-light" : "text-dark"
-              } font-light text-2xl flex-1${
-                i18n.dir() === "ltr" ? "text-left" : "text-right"
-              } `}
-            >
+            </CustomText>
+
+            <CustomText preset="subheading">
               {`${theme === "dark" ? t("settings.dark") : t("settings.light")}`}
-            </Text>
+            </CustomText>
           </View>
         </View>
       </AppGradient>
