@@ -4,45 +4,19 @@ import {
   ActivityIndicator,
   useColorScheme,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import AppGradient from "@/components/AppGradient";
 import { router } from "expo-router";
 import { useTranslation } from "react-i18next";
 import Colors from "@/constants/Colors";
 import CustomText from "@/atoms/CustomText";
 import CustomPressable from "@/atoms/CustomPressable";
+import { useFetchData } from "@/hooks/useFetchData";
 
 const NewsList = () => {
   const theme = useColorScheme();
   const { t } = useTranslation();
-  const [news, setNews] = useState<Article[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  type Article = {
-    title: string;
-    author: string;
-    description: string;
-    url: string;
-  };
-
-  useEffect(() => {
-    const fetchNews = async () => {
-      try {
-        const response = await fetch(
-          "https://newsapi.org/v2/top-headlines?country=us&apiKey=35d68208c1fa444a810535db09e7018b"
-        );
-        const data = await response.json();
-        // console.log(data.articles);
-        setNews(data.articles);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchNews();
-  }, []);
+  const { data, isLoading, error } = useFetchData("/top-headlines?country=us");
 
   return (
     <View className="flex-1">
@@ -56,7 +30,7 @@ const NewsList = () => {
             </CustomText>
           </View>
 
-          {loading ? (
+          {isLoading ? (
             <ActivityIndicator
               className="mt-16"
               size="large"
@@ -64,7 +38,7 @@ const NewsList = () => {
             />
           ) : (
             <FlatList
-              data={news}
+              data={data?.articles}
               className="mt-6 mb-4"
               keyExtractor={(item) => item.title}
               showsVerticalScrollIndicator={false}
