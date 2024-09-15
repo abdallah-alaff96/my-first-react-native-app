@@ -17,6 +17,7 @@ const NewsList = () => {
   const theme = useColorScheme();
   const { t } = useTranslation();
   const { data, isLoading, error } = useFetchData("/top-headlines?country=us");
+  console.log(data?.articles);
 
   return (
     <View className="flex-1">
@@ -38,7 +39,7 @@ const NewsList = () => {
             />
           ) : (
             <FlatList
-              data={data?.articles}
+              data={data?.articles || []}
               className="mt-6 mb-4"
               keyExtractor={(item) => item.title}
               showsVerticalScrollIndicator={false}
@@ -49,14 +50,18 @@ const NewsList = () => {
                     router.push({
                       pathname: "/[id]",
                       params: {
-                        id: item.author,
-                        title: item.title,
-                        author: item.author,
+                        id: item?.author ?? "Unknown",
+                        title: item?.title ?? "No Title",
+                        author: item?.author ?? "Unknown",
+                        description: item?.description ?? "No Description",
+                        urlToImage: item?.urlToImage ?? "",
                       },
                     })
                   }
                 >
-                  <CustomText preset="subheading">{item.author}</CustomText>
+                  <CustomText preset="subheading">
+                    {item?.title || "No Title"}
+                  </CustomText>
                 </CustomPressable>
               )}
             />

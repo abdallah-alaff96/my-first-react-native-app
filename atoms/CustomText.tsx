@@ -11,7 +11,7 @@ interface StyledTextProps extends TextProps {
 }
 
 const textStyling = StyleSheet.create({
-  heading: { fontSize: 32, fontWeight: "bold" },
+  heading: { fontSize: 32, fontWeight: "bold", marginVertical: 12 },
   subheading: { fontSize: 24, fontWeight: "bold", marginVertical: 4 },
   body: { fontSize: 16, fontWeight: "normal", marginVertical: 4 },
 });

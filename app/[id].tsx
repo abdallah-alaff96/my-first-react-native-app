@@ -10,7 +10,7 @@ import CustomText from "@/atoms/CustomText";
 
 const Details = () => {
   const theme = useColorScheme();
-  const { author, title } = useLocalSearchParams();
+  const { author, title, description, urlToImage } = useLocalSearchParams();
   const { t } = useTranslation();
 
   return (
@@ -34,12 +34,17 @@ const Details = () => {
           <CustomText preset="heading">{t("details.details_title")}</CustomText>
         </View>
         <View className="p-5">
-          <CustomText preset="subheading">{`${t(
-            "details.author"
-          )}: ${author}`}</CustomText>
-          <CustomText preset="body">{`${t(
-            "details.description"
-          )}: ${title}`}</CustomText>
+          <CustomText preset="heading">
+            {title ?? "No Title Available"}
+          </CustomText>
+          <CustomText preset="subheading">{t("details.author")}</CustomText>
+          <CustomText preset="body">{author ?? "Unknown"}</CustomText>
+          <CustomText preset="subheading">
+            {t("details.description")}
+          </CustomText>
+          <CustomText preset="body">
+            {description ?? "No Description Available"}
+          </CustomText>
         </View>
       </AppGradient>
     </View>
