@@ -41,7 +41,7 @@ const NewsList = () => {
             <FlatList
               data={data?.articles || []}
               className="mt-6 mb-4"
-              keyExtractor={(item) => item.title}
+              keyExtractor={(item) => item.publishedAt}
               showsVerticalScrollIndicator={false}
               renderItem={({ item }) => (
                 <CustomPressable

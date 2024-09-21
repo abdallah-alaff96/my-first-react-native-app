@@ -12,8 +12,44 @@ interface StyledTextProps extends TextProps {
 
 const textStyling = StyleSheet.create({
   heading: { fontSize: 32, fontWeight: "bold", marginVertical: 12 },
+  whiteHeading: {
+    fontSize: 32,
+    fontWeight: "bold",
+    marginVertical: 12,
+    color: Colors.light,
+  },
+  blackHeading: {
+    fontSize: 32,
+    fontWeight: "bold",
+    marginVertical: 12,
+    color: Colors.dark,
+  },
   subheading: { fontSize: 24, fontWeight: "bold", marginVertical: 4 },
+  whiteSubheading: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginVertical: 4,
+    color: Colors.light,
+  },
+  blackSubheading: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginVertical: 4,
+    color: Colors.dark,
+  },
   body: { fontSize: 16, fontWeight: "normal", marginVertical: 4 },
+  whiteBody: {
+    fontSize: 16,
+    fontWeight: "normal",
+    marginVertical: 4,
+    color: Colors.light,
+  },
+  blackBody: {
+    fontSize: 16,
+    fontWeight: "normal",
+    marginVertical: 4,
+    color: Colors.dark,
+  },
 });
 
 const CustomText = ({
@@ -31,7 +67,7 @@ const CustomText = ({
       ? { color: Colors.light }
       : { color: Colors.dark };
 
-  const styles = [textStyling[preset], textDir, textColor];
+  const styles = [textDir, textColor, textStyling[preset]];
 
   return (
     <Text style={styles} {...rest}>

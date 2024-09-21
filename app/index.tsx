@@ -16,10 +16,10 @@ const App = () => {
         <AppGradient colors={["rgba(0,0,0,0.2)", "rgba(0,0,0,0.6)"]}>
           <View className="flex flex-1 mx-5 my-12 justify-between items-center">
             <View className="w-72 flex justify-center items-center">
-              <CustomText preset="heading">
+              <CustomText preset="whiteHeading">
                 {t("app.breaking_news_title")}
               </CustomText>
-              <CustomText preset="body">{`${t(
+              <CustomText preset="whiteBody">{`${t(
                 "app.breaking_news_info"
               )} 🙌`}</CustomText>
             </View>
